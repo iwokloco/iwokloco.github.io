@@ -1,8 +1,52 @@
-<img class="cat" src="el_gato.jpg"/>
+
+<div id="catContainer" class="flex"></div>
+<button id="btAdd" class="button btBlue">Add</button>
+<div id="catLog"></div>
+
+<script type='text/javascript' src="node_modules/quantum-store/index.js"></script>
+<script type='text/javascript'>
+  qs.init({
+    list: []
+  });
+  const catContainer = document.getElementById('catContainer');
+  const catLog = document.getElementById('catLog');
+  const btAdd = document.getElementById('btAdd');
+
+  qs.subscribe('list', catContainer, (element, data) => {
+    element.innerHTML = data.map(cat => `<div><img class="cat" src="el_gato.jpg"/><span class="spanCat">${cat.name}</span></div>`).join('');
+  });  
+
+  qs.subscribe('list', catLog, (element, data) => {
+    element.innerHTML = `Number of cats: ${data.length}`;
+  }); 
+
+  btAdd.onclick = () => {
+    const currentList = qs.get('list');
+    currentList.push({name: `Gato gris #${currentList.length}`});
+    qs.set('list', currentList);
+  };
+
+</script>
+
 <style>
-  body {background: #242529;}
-  .cat { border-radius: 50%;cursor: pointer; }
-  .cat:hover{animation: boing 300ms ease-in-out;}
+body {background: #242529;color:#fff;}
+.flex{display:flex;flex-wrap: wrap;justify-content: flex-start;}
+.flex div{flex: 1 0 10%;}
+.cat { border-radius: 50%;cursor: pointer; }
+.cat:hover{animation: boing 300ms ease-in-out;}
+.btBlue {background-color: #008CBA;}
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}  
+.spanCat{margin-left: -114px;}
 @keyframes boing {
   15%, 40%, 75%, 100% {
       transform-origin: center center;
@@ -20,5 +64,4 @@
       transform: scale(1, 1);
   }
 }
-
 </style>
