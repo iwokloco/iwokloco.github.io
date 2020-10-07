@@ -1,1 +1,23 @@
-Hello world
+<img class="cat" src="el_gato.jpg"/>
+<style>
+  .cat { border-radius: 50%;cursor: pointer; }
+  .cat:hover{animation: boing 300ms ease-in-out;}
+@keyframes boing {
+  15%, 40%, 75%, 100% {
+      transform-origin: center center;
+  }
+  15% {
+      transform: scale(1.1, 1.1);
+  }
+  40% {
+      transform: scale(0.95, 0.95);
+  }
+  75% {
+      transform: scale(1.05, 1.05);
+  }
+  100% {
+      transform: scale(1, 1);
+  }
+}
+
+</style>
