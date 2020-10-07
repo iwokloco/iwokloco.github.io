@@ -3,7 +3,9 @@
 <button id="btAdd" class="button btBlue">Add</button>
 <div id="catLog"></div>
 
-<script type='text/javascript' src="index.js"></script>
+<script type='text/javascript'>
+qs={getW:()=>{try{return global}catch(t){return window}},init:t=>{const n=qs.getW();n.quantum={state:Object.assign({},t)};const s=n.quantum.state;for(let t in s)s[t].$subscribers=[],s[t].$connections=[]},subscribe:(t,n,s,e)=>{const c=qs.getW().quantum.state;c.hasOwnProperty(t)&&(n.quantum=c[t].$subscribers.length,c[t].$subscribers.push({element:n,onchange:s})),e&&e(n,c[t])},connect:(t,n,s)=>{const e=qs.getW().quantum.state;e.hasOwnProperty(t)&&e[t].$connections.push({component:n,mapState:s})},disconnect:(t,n)=>{const s=qs.getW().quantum.state;s.hasOwnProperty(t)&&s[t].$connections.splice(s[t].$connections.findIndex(t=>t.component===n),1)},unsubscribe:(t,n)=>{const s=qs.getW().quantum.state;if(s.hasOwnProperty(t)&&s[t].$subscribers.length>0){const e=s[t].$subscribers.findIndex(t=>t.element.quantum===n.quantum);s[t].$subscribers.splice(e,1)}},get:t=>{const n=qs.getW().quantum.state;return n.hasOwnProperty(t)?n[t]:null},set:(t,n)=>{const s=qs.getW().quantum.state;if(s.hasOwnProperty(t)){if(s[t]=Object.assign(s[t],n),s[t].$subscribers.length>0)for(let n in s[t].$subscribers)s[t].$subscribers[n].onchange(s[t].$subscribers[n].element,s[t]);if(s[t].$connections.length>0)for(let n in s[t].$connections){s[t].$connections[n].component.setState(s[t].$connections[n].mapState(s[t]))}}},log:t=>{const n=qs.getW();n.quantum.state.hasOwnProperty(t)&&console.log(n.quantum.state[t])}};
+</script>
 <script type='text/javascript'>
   qs.init({
     list: []
