@@ -79,5 +79,11 @@ qs = {
     const w = qs.getW();
     if (w.quantum.state.hasOwnProperty(key))
       console.log(w.quantum.state[key]);
+  },
+  dispatch: (action) => {
+
+  },
+  reducer: (reducer) => {
+    
   }
 };

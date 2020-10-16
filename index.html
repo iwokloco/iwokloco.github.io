@@ -2,6 +2,26 @@
 <div id="catContainer" class="flex"></div>
 <button id="btAdd" class="button btBlue">Add</button>
 <div id="catLog"></div>
+<div class="row">
+  <div class="column">
+    <img src="photo_2019-11-29_00-25-07.jpg">
+    <img src="photo_2020-10-10_01-22-21.jpg">
+  </div>
+  <div class="column">
+    <img src="photo_2020-10-06_00-34-58.jpg">
+	<img src="photo_2020-10-16_00-02-06.jpg">
+  </div>  
+	<div class="column">
+		<img src="IMG_20201013_141902.jpg">
+		<img src="el_gato.jpg">
+	</div>	  
+	<div class="column">
+		<img src="photo_2020-10-16_02-58-53.jpg">
+	</div>
+
+	
+</div>
+
 
 <script type='text/javascript'>
 qs={getW:()=>{try{return global}catch(t){return window}},init:t=>{const n=qs.getW();n.quantum={state:Object.assign({},t)};const s=n.quantum.state;for(let t in s)s[t].$subscribers=[],s[t].$connections=[]},subscribe:(t,n,s,e)=>{const c=qs.getW().quantum.state;c.hasOwnProperty(t)&&(n.quantum=c[t].$subscribers.length,c[t].$subscribers.push({element:n,onchange:s})),e&&e(n,c[t])},connect:(t,n,s)=>{const e=qs.getW().quantum.state;e.hasOwnProperty(t)&&e[t].$connections.push({component:n,mapState:s})},disconnect:(t,n)=>{const s=qs.getW().quantum.state;s.hasOwnProperty(t)&&s[t].$connections.splice(s[t].$connections.findIndex(t=>t.component===n),1)},unsubscribe:(t,n)=>{const s=qs.getW().quantum.state;if(s.hasOwnProperty(t)&&s[t].$subscribers.length>0){const e=s[t].$subscribers.findIndex(t=>t.element.quantum===n.quantum);s[t].$subscribers.splice(e,1)}},get:t=>{const n=qs.getW().quantum.state;return n.hasOwnProperty(t)?n[t]:null},set:(t,n)=>{const s=qs.getW().quantum.state;if(s.hasOwnProperty(t)){if(s[t]=Object.assign(s[t],n),s[t].$subscribers.length>0)for(let n in s[t].$subscribers)s[t].$subscribers[n].onchange(s[t].$subscribers[n].element,s[t]);if(s[t].$connections.length>0)for(let n in s[t].$connections){s[t].$connections[n].component.setState(s[t].$connections[n].mapState(s[t]))}}},log:t=>{const n=qs.getW();n.quantum.state.hasOwnProperty(t)&&console.log(n.quantum.state[t])}};
@@ -33,7 +53,10 @@ qs={getW:()=>{try{return global}catch(t){return window}},init:t=>{const n=qs.get
 <style>
 body {background: #242529;color:#fff;}
 .flex{display:flex;flex-wrap: wrap;justify-content: flex-start;}
+.nowrap {flex-wrap: nowrap;}
 .flex div{flex: 1 0 10%;}
+.f1 {flex: 1;}
+.img {margin: 10px;width:45%;height: auto;}
 .cat { border-radius: 50%;cursor: pointer; }
 .cat:hover{animation: boing 300ms ease-in-out;}
 .btBlue {background-color: #008CBA;}
@@ -64,6 +87,45 @@ body {background: #242529;color:#fff;}
   }
   100% {
       transform: scale(1, 1);
+  }
+}
+
+
+
+/*	https://www.w3schools.com/howto/howto_css_image_grid_responsive.asp	*/
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+-ms-flex: 1; /* IE10 */
+  flex: 1;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
   }
 }
 </style>
