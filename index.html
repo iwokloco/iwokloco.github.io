@@ -1,6 +1,6 @@
 
 <div id="catContainer" class="flex"></div>
-<button id="btAdd" class="button btBlue">Add</button>
+<button id="btAdd" class="none button btBlue">Add</button>
 <div id="catLog"></div>
 <div class="row">
   <div class="column">
@@ -52,6 +52,7 @@ qs={getW:()=>{try{return global}catch(t){return window}},init:t=>{const n=qs.get
 
 <style>
 body {background: #242529;color:#fff;}
+.none{display:none;}
 .flex{display:flex;flex-wrap: wrap;justify-content: flex-start;}
 .nowrap {flex-wrap: nowrap;}
 .flex div{flex: 1 0 10%;}
